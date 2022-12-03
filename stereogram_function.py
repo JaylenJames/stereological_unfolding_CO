@@ -9,8 +9,6 @@ Function used to calculate the size and shape correction factors as described
     in Cruz-Orive's paper: Particle size-shape distributions: the general 
     spheroid problem Part II. Stochastic model and practical guide.
     
-
-    
 """
 
 import numpy as np

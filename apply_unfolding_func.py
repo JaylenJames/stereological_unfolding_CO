@@ -6,7 +6,7 @@ Created on Thu Jul 30 14:49:33 2020
 @author: JaylenJames
 
 
-This function will apply Cruz-Orive's unfolding algorthm 
+This function will apply Cruz-Orive's unfolding algorthm to a matrix
 """
 import numpy as np
 from stereogram_function import stereogram
@@ -20,8 +20,10 @@ def apply_unfolding_func(two_dim_frequencies, zero_negatives = False, bins_per_v
     
     Parameters
     ----------
-    two_dim_frequencies : 2 by 2 matrix
-        The frequencies associated with m and y^2 measurments from a section.
+    two_dim_frequencies : n by n matrix where n is the number of rows and columns.
+        The values in the matrix are the frequencies associated 
+        with the m and y^2 measurments from a section of a population of 
+        spheroidal particles.
     dtype : float
         
     zero_negatives : bool, optional
@@ -47,14 +49,13 @@ def apply_unfolding_func(two_dim_frequencies, zero_negatives = False, bins_per_v
     s = bins_per_var
     k = 10
     delta = B/s
-    P, Q = stereogram(bins_per_var = s) #Obtain values
+    P, Q = stereogram(bins_per_var = s) #Obtain size and shape factor values. These are the inverses.
     
     
-    #H_bar = 304/(135*np.pi) #value from CO's Part 1 paper
-    #H_bar = 298/(65*np.pi) #estimate for CO's data
-    H_bar = 90/(80*np.pi) #estimate for Dr. Pilchak's data
-    #H_bar = 48.6 # Mean caliper diameter of Major principal semi axis - second estimate for Dr. Pilchak's data
-    #delta = 1/s
+    H_bar = 90/(80*np.pi) #estimate for original data. It should be adjusted for your data set so that g_ij_sum = 1
+                          #     See Cruz-Orive's paper Particle size-shape distributions: the general spheroid prolem Part I:
+                          #     Mathematical Model  
+    
     
     g = np.zeros([s,s])           #initialize blank g matrix
     val_mat = np.zeros([s,s])
