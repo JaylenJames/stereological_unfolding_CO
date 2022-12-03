@@ -23,8 +23,8 @@ from scipy import integrate
 from sklearn.mixture import GaussianMixture
 from matplotlib.colors import LogNorm
 
-#Setting to show plots in a separte window. Set to 'inline' to show in console
-#get_ipython().run_line_magic('matplotlib', 'qt')
+#Setting to show plots in a separte window. Change 'qt' to 'inline' to show in console
+get_ipython().run_line_magic('matplotlib', 'qt')
 
 
 #Recreating Cruz Orive's inputs
