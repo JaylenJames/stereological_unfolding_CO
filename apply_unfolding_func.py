@@ -95,11 +95,6 @@ def apply_unfolding_func(two_dim_frequencies, zero_negatives = False, bins_per_v
         g = g.clip(min=0)
     
     
-    
-    
-    
-    
-    
     return g
 
 if __name__ == '__main__':
