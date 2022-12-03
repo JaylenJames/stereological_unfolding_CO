@@ -9,7 +9,6 @@ Script will take the recreation of CO's inputs from paper and create
     a 3D histogram of the data.
 
 
-This file includes changes to histogram4.py after plotting CO's input correctly
 """
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
@@ -28,7 +27,7 @@ from matplotlib.colors import LogNorm
 #get_ipython().run_line_magic('matplotlib', 'qt')
 
 
-#Recreating CO's inputs
+#Recreating Cruz Orive's inputs
 
 
 double_int_results = np.zeros([10,10])
@@ -65,23 +64,16 @@ for beta_iteration in range(10):
 
 
 
-
-
-
-
 xedges = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 yedges = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 
 
 
 if __name__ == '__main__':
-    # Create a figure for plotting the data as a 3D histogram.
+    
+    # Create a figure that plots the sythetic input data as a 3D histogram.
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    
-    #
-    #hist, xedges, yedges = np.histogram2d(min_semi_axis_norm, y_square_norm, bins=(xedges, yedges))
-    
     
     
     # Construct arrays for the anchor positions of the 16 bars.
@@ -96,10 +88,6 @@ if __name__ == '__main__':
     dz = double_int_results.ravel()
     
     
-    bar_color = 'r' #np.array([1,1,2,2,3,3])
-    bar_color_set = ['r','r','b','b','g','g']
-    bar_color_array = np.asarray(bar_color_set)
-    
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color = None ,zsort='average')
     
     plt.show()
@@ -111,11 +99,10 @@ P, Q = stereogram() #Obtain values for 3D spheroids histogram
 ####### Begin Calculation of 3D speroid size and shape frequencies ##########
 
 #Set constants to be used in calculation
-#H_bar = np.mean(min_semi_axis_norm)#1           #replace with correct value
-H_bar = 298/(65*np.pi) #Estimate through trial and error in this code
-#H_bar = 304/(135*np.pi) #value from CO's Part 1 paper
 
-#delta = 1/s
+H_bar = 298/(65*np.pi) #Value estimated through trial and error in this code
+#H_bar = 304/(135*np.pi) #Value from CO's Part 1 paper
+
 
 g = np.zeros([10,10])           #initialize blank g matrix
 val_mat = np.zeros([10,10])
@@ -152,17 +139,10 @@ g_ij_sum = np.sum(g)
 
 
 if __name__ == '__main__':
-    # Create a figure for plotting the data as a 3D histogram.
-    ######Add axis lables to the graphs!!!#######
+    
+    # Create a figure for plotting the estimated 3D size, shape frequencies as a 3D histogram.
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    
-    #xpos = [range(g.shape[0])]
-    #ypos = [range(g.shape[1])]
-    #xpos, ypos = np.meshgrid(xpos, ypos)
-    #xpos = xpos.flatten('F')
-    #ypos = ypos.flatten('F')
-    #zpos = np.zeros_like(xpos)
     
     
     xpos, ypos = np.meshgrid(xedges[:-1], yedges[:-1], indexing="ij")
