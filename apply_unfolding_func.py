@@ -39,6 +39,9 @@ def apply_unfolding_func(two_dim_frequencies, zero_negatives = False, bins_per_v
     Examples
     --------
    
+    
+   
+    
     """
     B = 1
     s = bins_per_var
